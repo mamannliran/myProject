@@ -13,6 +13,7 @@ resource "aws_ecr_repository" "nodejs-web-app" {
   }
 }
 
+
 # Staging Repository
 
 resource "aws_ecr_repository" "nodejs-web-app-staging" {
@@ -27,6 +28,7 @@ resource "aws_ecr_repository" "nodejs-web-app-staging" {
     Name = "Elastic Container Registry to store Docker Artifacts"
   }
 }
+
 
 # Test Repository
 

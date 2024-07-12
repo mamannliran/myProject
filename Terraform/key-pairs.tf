@@ -5,6 +5,7 @@ resource "aws_key_pair" "nodejs-web-app-key" {
   public_key = file("./nodejs-web-app.pem")
 }
 
+
 # SSH key - Jenkins
 
 resource "aws_key_pair" "jenkins-key" {

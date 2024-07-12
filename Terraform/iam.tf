@@ -57,7 +57,9 @@ resource "aws_iam_role" "jenkins" {
                           
 }
 
+
 # iam policy
+
 resource "aws_iam_policy" "ecr-access" {
   name = "ecr-access"
   policy = <<EOF
@@ -110,6 +112,7 @@ resource "aws_iam_policy" "s3-access" {
 }
 EOF
 } 
+
 
 # Policy: Ec2 Reboot access
 

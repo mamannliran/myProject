@@ -1,6 +1,7 @@
 # 1. Create a VPC
+
 resource "aws_vpc" "nodejs-web-app" {
-  cidr_block = "10.0.0.0/16" // completely private 10.0 are fixed
+  cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
 
   tags = {
@@ -10,6 +11,7 @@ resource "aws_vpc" "nodejs-web-app" {
 
 
 # 2. Create a Gateway
+
 resource "aws_internet_gateway" "nodejs-web-app" {
   vpc_id = aws_vpc.nodejs-web-app.id
 }
@@ -43,6 +45,7 @@ resource "aws_subnet" "subnet-public-jenkins" {
   }
 }
 
+
 # 4.2 Create Subnet - Simple Web App
 
 resource "aws_subnet" "subnet-public-web-app" {
@@ -54,6 +57,8 @@ resource "aws_subnet" "subnet-public-web-app" {
     Name = "nodejs Web App Subnet"
   }
 }
+
+
 # 5.1 Create a Route Table Association --> associate Jenkins subnet to route table
 
 resource "aws_route_table_association" "jenkins-subnet" {
@@ -68,7 +73,6 @@ resource "aws_route_table_association" "web-app-subnet" {
   subnet_id = aws_subnet.subnet-public-web-app.id
   route_table_id = aws_route_table.allow-outgoing-access.id
 }
-
 
 
 # 6.1 Create a Security Group for inbound web traffic
@@ -95,6 +99,7 @@ resource "aws_security_group" "allow-web-traffic" {
   }
 }
 
+
 # 6.2 Create a Security Group for inbound ssh
 
 resource "aws_security_group" "allow-ssh-traffic" {
@@ -111,6 +116,7 @@ resource "aws_security_group" "allow-ssh-traffic" {
   }
 }
 
+
 # 6.3 Create a Security Group for inbound traffic to Jenkins
 
 resource "aws_security_group" "allow-jenkins-traffic" {
@@ -126,6 +132,8 @@ resource "aws_security_group" "allow-jenkins-traffic" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+
 # 6.4 Create a Security Group for inbound security checks
 
 resource "aws_security_group" "allow-staging-traffic" {
@@ -158,6 +166,7 @@ resource "aws_security_group" "allow-all-outbound" {
   }
 }
 
+
 # 7.1 Create a Network Interface for jenkins
 
 resource "aws_network_interface" "jenkins" {
@@ -169,6 +178,7 @@ resource "aws_network_interface" "jenkins" {
                      aws_security_group.allow-staging-traffic.id]
 }
 
+
 # 7.2 Create a Network Interface for nodejs Web App
 
 resource "aws_network_interface" "nodejs-web-app" {
@@ -178,6 +188,8 @@ resource "aws_network_interface" "nodejs-web-app" {
                       aws_security_group.allow-ssh-traffic.id,
                       aws_security_group.allow-web-traffic.id ]
 }
+
+
 # 8.1 Assign an Elastic IP to the Network Interface of Jenkins
 
 resource "aws_eip" "jenkins" {
@@ -189,8 +201,10 @@ resource "aws_eip" "jenkins" {
   ]
 }
 
-# try to fix this fucking bullshit error:
+
+# fix for this fucking bullshit error:
 # Error: associating EC2 EIP (eipalloc-0790f9b40d5fbb2ee): operation error EC2: AssociateAddress, https response error StatusCode: 400, RequestID: 0543d561-97ee-485a-9626-f97a841046a1, api error IncorrectInstanceState: The pending-instance-creation instance to which 'eni-0537000d9e9ccb43c' is attached is not in a valid state for this operation
+
 resource "time_sleep" "myDelay" {
   create_duration = "30s"
   depends_on = [

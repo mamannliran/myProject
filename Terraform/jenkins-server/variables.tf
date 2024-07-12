@@ -32,10 +32,6 @@ variable "repository-url" {
   type = string
 }
 
-
-
-
-
 variable "repository-test-url" {
   type = string
 }

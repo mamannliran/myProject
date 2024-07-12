@@ -1,18 +1,14 @@
 [
   {
-    "name": "Cloud Team",
-    "email": "cloud@rapidcode.co.in"
+    "name": "Text 1",
+    "email": "text1@liran.com"
   },
   {
-    "name": "Juno Team",
-    "email": "Juno@rapidcode.co.in"
+    "name": "Text 2",
+    "email": "text2@liran.com"
   },
   {
-    "name": "Teach Team",
-    "email": "tech@rapidcode.co.in"
-  },
-  {
-    "name": "Support Team",
-    "email": "support@rapidcode.co.in"
+    "name": "Text 3",
+    "email": "text3@liran.com"
   }
 ]

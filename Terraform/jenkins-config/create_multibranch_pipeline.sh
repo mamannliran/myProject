@@ -10,7 +10,6 @@ arr_crumb=(${full_crumb//:/ })
 only_crumb=$(echo ${arr_crumb[1]})
 
 # Create Job
-
 curl -u "$user:$password" -X POST "$url/createItem" \
      -H "$full_crumb" \
      --cookie $cookie_jar \
@@ -19,7 +18,6 @@ curl -u "$user:$password" -X POST "$url/createItem" \
      --data-urlencode "Jenkins-Crumb=$only_crumb"
 
 # Config
-
 curl -u "$user:$password" -X POST "$url/job/$jobName_URLEncoded/configSubmit" \
   -H "$full_crumb" \
   --cookie $cookie_jar \
