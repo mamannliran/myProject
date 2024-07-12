@@ -38,7 +38,7 @@ resource "aws_route_table" "allow-outgoing-access" {
 resource "aws_subnet" "subnet-public-jenkins" {
   cidr_block = "10.0.1.0/24"
   vpc_id = aws_vpc.nodejs-web-app.id
-  availability_zone = "ap-south-1a"
+  availability_zone = "ap-northeast-1a"
 
   tags = {
     Name = "Jenkins Subnet"
@@ -51,7 +51,7 @@ resource "aws_subnet" "subnet-public-jenkins" {
 resource "aws_subnet" "subnet-public-web-app" {
   cidr_block = "10.0.3.0/24"
   vpc_id = aws_vpc.nodejs-web-app.id
-  availability_zone = "ap-south-1a"
+  availability_zone = "ap-northeast-1a"
 
   tags = {
     Name = "nodejs Web App Subnet"
