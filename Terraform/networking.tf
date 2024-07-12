@@ -36,7 +36,7 @@ resource "aws_route_table" "allow-outgoing-access" {
 resource "aws_subnet" "subnet-public-jenkins" {
   cidr_block = "10.0.1.0/24"
   vpc_id = aws_vpc.nodejs-web-app.id
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
 
   tags = {
     Name = "Jenkins Subnet"
@@ -48,7 +48,7 @@ resource "aws_subnet" "subnet-public-jenkins" {
 resource "aws_subnet" "subnet-public-web-app" {
   cidr_block = "10.0.3.0/24"
   vpc_id = aws_vpc.nodejs-web-app.id
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
 
   tags = {
     Name = "nodejs Web App Subnet"
@@ -181,20 +181,32 @@ resource "aws_network_interface" "nodejs-web-app" {
 # 8.1 Assign an Elastic IP to the Network Interface of Jenkins
 
 resource "aws_eip" "jenkins" {
-  vpc = true
+  domain = "vpc"
   network_interface = aws_network_interface.jenkins.id
   associate_with_private_ip = "10.0.1.50"
   depends_on = [
     aws_internet_gateway.nodejs-web-app # it depends on the internet gateway (as the terraform page says, the elastic ip may require the internet gateway to already exist).
   ]
 }
+
+# try to fix this fucking bullshit error:
+# Error: associating EC2 EIP (eipalloc-0790f9b40d5fbb2ee): operation error EC2: AssociateAddress, https response error StatusCode: 400, RequestID: 0543d561-97ee-485a-9626-f97a841046a1, api error IncorrectInstanceState: The pending-instance-creation instance to which 'eni-0537000d9e9ccb43c' is attached is not in a valid state for this operation
+resource "time_sleep" "myDelay" {
+  create_duration = "30s"
+  depends_on = [
+    aws_network_interface.nodejs-web-app
+  ]
+}
+
+
 # 8.2 Assign an Elastic IP to the Network Interface of Simple Web App
 
 resource "aws_eip" "nodejs-web-app" {
-  vpc = true
+  domain = "vpc"
   network_interface = aws_network_interface.nodejs-web-app.id
   associate_with_private_ip = "10.0.3.50"
   depends_on = [
-    aws_internet_gateway.nodejs-web-app
+    aws_internet_gateway.nodejs-web-app,
+    time_sleep.myDelay
   ]
 }
