@@ -13,7 +13,7 @@ RUN npm i && \
     mv -f /tmp/* . && \
     rm -f -R /tmp
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 EXPOSE 8000
 
