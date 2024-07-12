@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2024-07-12T06:36:18.955Z",
-    "end": "2024-07-12T06:36:19.086Z",
-    "duration": 131,
+    "failures": 0,
+    "start": "2023-10-28T13:39:56.790Z",
+    "end": "2023-10-28T13:39:56.872Z",
+    "duration": 82,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "11f4c2bd-bc6e-4372-b383-9e560182041f",
+      "uuid": "cee09c45-eee9-4f6a-97e6-32b8fa2c26a3",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,9 +27,9 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5dd5e0b3-cf4e-4fbe-9126-b12173913779",
+          "uuid": "87d02991-4803-45b4-a1f2-a1e283dad2cf",
           "title": "GET /users",
-          "fullFile": "/home/liran/myProject/simple-nodejs-web-app/server/test/integration/index.js",
+          "fullFile": "/Users/deepakverma/project1/simple-nodejs-web-app/server/test/integration/index.js",
           "file": "/test/integration/index.js",
           "beforeHooks": [],
           "afterHooks": [],
@@ -38,33 +38,29 @@
               "title": "Should display a list of users, fetched from db",
               "fullTitle": "GET /users Should display a list of users, fetched from db",
               "timedOut": false,
-              "duration": 69,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 76,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
               "code": "_chai.default.request(_index.default).get(\"/users\").then(res => {\n  (0, _chai.expect)(res).to.be.html;\n  res.text.should.match(/<h1.*>Rapidcode Users<\\/h1>/g);\n  res.text.should.match(/<h3.*>.*<\\/h3>/g);\n  done();\n}).catch(err => {\n  done(err);\n});",
-              "err": {
-                "message": "AssertionError: expected '<!DOCTYPE html>\\n<html lang=\"en\">\\n  <head>\\n    <meta charset=\"UTF-8\" />\\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\\n    <!--\\n      <link rel=\"stylesheet\" href=\"./css/styles.css\" />\\n    -->\\n    <title>Simple Web App</title>\\n    <style>\\n      body {\\n        background-color: #333;\\n        color: white;\\n      }\\n\\n      .container {\\n        position: absolute;\\n        top: 50%;\\n        left: 50%;\\n        transform: translate(-50%, -50%);\\n        text-align: center;\\n      }\\n    </style>\\n  </head>\\n  <body>\\n    <div class=\"container\">\\n      <h1 style=\"margin-bottom: 2em\">Users</h1>\\n      \\n      <h3>Fibre Bundle</h3>\\n      \\n      <h3>Quantum Electrodynamics</h3>\\n      \\n      <h3>Feynman Diagram</h3>\\n      \\n      <h3>Differentiable Manifold</h3>\\n      \\n    </div>\\n  </body>\\n</html>\\n' to match /<h1.*>Rapidcode Users<\\/h1>/g",
-                "estack": "AssertionError: expected '<!DOCTYPE html>\\n<html lang=\"en\">\\n  <head>\\n    <meta charset=\"UTF-8\" />\\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\\n    <!--\\n      <link rel=\"stylesheet\" href=\"./css/styles.css\" />\\n    -->\\n    <title>Simple Web App</title>\\n    <style>\\n      body {\\n        background-color: #333;\\n        color: white;\\n      }\\n\\n      .container {\\n        position: absolute;\\n        top: 50%;\\n        left: 50%;\\n        transform: translate(-50%, -50%);\\n        text-align: center;\\n      }\\n    </style>\\n  </head>\\n  <body>\\n    <div class=\"container\">\\n      <h1 style=\"margin-bottom: 2em\">Users</h1>\\n      \\n      <h3>Fibre Bundle</h3>\\n      \\n      <h3>Quantum Electrodynamics</h3>\\n      \\n      <h3>Feynman Diagram</h3>\\n      \\n      <h3>Differentiable Manifold</h3>\\n      \\n    </div>\\n  </body>\\n</html>\\n' to match /<h1.*>Rapidcode Users<\\/h1>/g\n    at /home/liran/myProject/simple-nodejs-web-app/server/test/integration/index.js:15:25\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                "diff": null
-              },
-              "uuid": "b54b850b-13c6-4bcd-8ded-c54708d8f06a",
-              "parentUUID": "5dd5e0b3-cf4e-4fbe-9126-b12173913779",
+              "err": {},
+              "uuid": "09bcbedc-59d6-4431-b37d-67988e1c188f",
+              "parentUUID": "87d02991-4803-45b4-a1f2-a1e283dad2cf",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "b54b850b-13c6-4bcd-8ded-c54708d8f06a"
+          "passes": [
+            "09bcbedc-59d6-4431-b37d-67988e1c188f"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 69,
+          "duration": 76,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
