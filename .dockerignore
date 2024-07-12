@@ -1,5 +1,6 @@
 Dockerfile.test
 node_modules
 .gitignore
-.git
+.git 
 Dockerfile
+Terraform
