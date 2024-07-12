@@ -1,18 +1,18 @@
 [
   {
-    "name": "Fibre Bundle",
-    "email": "fibre@bundle.com"
+    "name": "Cloud Team",
+    "email": "cloud@rapidcode.co.in"
   },
   {
-    "name": "Quantum Electrodynamics",
-    "email": "Quantum@electrodynamics.com"
+    "name": "Juno Team",
+    "email": "Juno@rapidcode.co.in"
   },
   {
-    "name": "Feynman Diagram",
-    "email": "feynman@diagram.com"
+    "name": "Teach Team",
+    "email": "tech@rapidcode.co.in"
   },
   {
-    "name": "Differentiable Manifold",
-    "email": "differentiable@manifold.com"
+    "name": "Support Team",
+    "email": "support@rapidcode.co.in"
   }
 ]

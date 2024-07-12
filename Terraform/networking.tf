@@ -43,7 +43,7 @@ resource "aws_subnet" "subnet-public-jenkins" {
   }
 }
 
-# 4.2 Create Subnet - Simple nodejs Web App
+# 4.2 Create Subnet - Simple Web App
 
 resource "aws_subnet" "subnet-public-web-app" {
   cidr_block = "10.0.3.0/24"
@@ -191,7 +191,7 @@ resource "aws_eip" "jenkins" {
 # 8.2 Assign an Elastic IP to the Network Interface of Simple Web App
 
 resource "aws_eip" "nodejs-web-app" {
-  domain = "vpc"
+  vpc = true
   network_interface = aws_network_interface.nodejs-web-app.id
   associate_with_private_ip = "10.0.3.50"
   depends_on = [

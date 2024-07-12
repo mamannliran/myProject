@@ -1,7 +1,3 @@
-variable "ami-id" {
-    type = string
-}
-
 variable "aws-access-key" {
   type = string
 }
@@ -41,3 +37,7 @@ variable "job-name" {
 variable "secrets" {
   type = map(string)
 }
+
+variable "ami-id" {
+    type = string
+  }

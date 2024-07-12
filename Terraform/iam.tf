@@ -5,7 +5,25 @@ resource "aws_iam_instance_profile" "nodejs-web-app" {
   role = aws_iam_role.nodejs-web-app.name
 }
 
+resource "aws_iam_role" "nodejs-web-app" {
+  name = "nodejs-web-app"
 
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  managed_policy_arns = [aws_iam_policy.ecr-access.arn]
+}
 
 
 # Jenkins
@@ -31,8 +49,15 @@ resource "aws_iam_role" "jenkins" {
       },
     ]
   })
+
+  managed_policy_arns = [ aws_iam_policy.ecr-access.arn,
+                          aws_iam_policy.s3-access.arn,
+                          aws_iam_policy.ec2-access.arn,
+                          aws_iam_policy.secrets-access.arn]
+                          
 }
 
+# iam policy
 resource "aws_iam_policy" "ecr-access" {
   name = "ecr-access"
   policy = <<EOF
@@ -67,6 +92,24 @@ EOF
 }
 
 
+# Policy: S3 Access
+
+resource "aws_iam_policy" "s3-access" {
+  name = "s3-access"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+} 
 
 # Policy: Ec2 Reboot access
 
@@ -91,7 +134,6 @@ EOF
 }
 
 
-
 # Policy: Secrets Access
 
 resource "aws_iam_policy" "secrets-access" {
@@ -110,29 +152,3 @@ resource "aws_iam_policy" "secrets-access" {
 }
 EOF
 }
-
-
-
-resource "aws_iam_role" "nodejs-web-app" {
-  name = "nodejs-web-app"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      },
-    ]
-  })
-
-  managed_policy_arns = [aws_iam_policy.ecr-access.arn]
-}
-
-
-
-
