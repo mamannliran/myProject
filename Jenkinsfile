@@ -6,7 +6,7 @@ pipeline {
         echo "Logging into the private AWS Elastic Container Registry"
         script {
           sh """
-          echo "Hello World3"
+          echo "Hello World4"
           """
         }
       }
