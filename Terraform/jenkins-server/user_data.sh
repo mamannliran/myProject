@@ -101,7 +101,7 @@ sudo sleep 120
 ./create_credentials.sh
 
 # Output the credentials id in a credentials_id file
-python -c "import sys;import json;print(json.loads(raw_input())['credentials'][0]['id'])" <<< $(./get_credentials_id.sh) > credentials_id
+python3 -c "import sys;import json;print(json.loads(raw_input())['credentials'][0]['id'])" <<< $(./get_credentials_id.sh) > credentials_id
 
 ./create_multibranch_pipeline.sh
 

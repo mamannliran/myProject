@@ -1,5 +1,5 @@
 #! /bin/bash
-url_urlEncoded=$(python -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$url")
+url_urlEncoded=$(python3 -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$url")
 
 cookie_jar="$(mktemp)"
 full_crumb=$(curl -u "$user:$password" --cookie-jar "$cookie_jar" $url/crumbIssuer/api/xml?xpath=concat\(//crumbRequestField,%22:%22,//crumb\))

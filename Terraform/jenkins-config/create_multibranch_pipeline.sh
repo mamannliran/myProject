@@ -1,8 +1,8 @@
 #! /bin/bash
 credentials=$(cat credentials_id) # output from get_credentials_id.sh
 
-jobName_URLEncoded=$(python -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$jobName")
-remote_URLEncoded=$(python -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$remote")
+jobName_URLEncoded=$(python3 -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$jobName")
+remote_URLEncoded=$(python3 -c "import urllib.parse;print(urllib.parse.quote(input(), safe=''))" <<< "$remote")
 
 cookie_jar="$(mktemp)"
 full_crumb=$(curl -u "$user:$password" --cookie-jar "$cookie_jar" $url/crumbIssuer/api/xml?xpath=concat\(//crumbRequestField,%22:%22,//crumb\))
