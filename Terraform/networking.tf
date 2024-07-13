@@ -137,7 +137,7 @@ resource "aws_security_group" "allow-jenkins-traffic" {
 # 6.4 Create a Security Group for inbound security checks
 
 resource "aws_security_group" "allow-staging-traffic" {
-  name = "allow-stagin-traffic"
+  name = "allow-staging-traffic"
   description = "Allow Inbound traffic for security checks"
   vpc_id = aws_vpc.nodejs-web-app.id
 
