@@ -6,6 +6,12 @@ sudo apt install fontconfig openjdk-17-jre -y
 # Install Git
 sudo apt install -y git
 
+# Install aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip
+unzip awscliv2.zip
+sudo ./aws/install
+
 # Install Jenkins
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
