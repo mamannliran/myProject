@@ -37,7 +37,7 @@ sudo docker pull ${repository_url}:release
 sudo docker run -p 8000:8000 ${repository_url}:release
 EOT
 
-# Move the script into the specific ubuntu linux start up folder, in order for the script to run after boot
+# Move the script into the specific ubuntu linux first start up folder, in order for the script to run after initial boot
 sudo mv start-website /var/lib/cloud/scripts/per-boot/start-website
 
 # Mark the script as executable
@@ -45,3 +45,20 @@ sudo chmod +x /var/lib/cloud/scripts/per-boot/start-website
 
 # Run the script
 /var/lib/cloud/scripts/per-boot/start-website
+
+# Create file that starts the website after every reboot
+sudo touch /etc/rc.local
+
+# Give it permissions
+sudo chmod 777 /etc/rc.local
+
+# Insert the script into the file
+sudo cat << 'EOF' > /etc/rc.local
+#!/bin/sh -e
+sudo /var/lib/cloud/scripts/per-boot/start-website
+exit 0
+EOF
+
+# Update init script to run at startup
+sudo update-rc.d start-website defaults
+
