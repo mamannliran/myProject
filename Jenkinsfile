@@ -142,7 +142,7 @@ pipeline {
             sh """
             cd /opt/app/server
             npm rm loadtest
-            npm i loadtest
+            npm i loadtest@5.2.0
             npm run test:load > /output/load_test.txt
             """
           }
