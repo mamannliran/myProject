@@ -2,6 +2,12 @@
 
 sudo apt update -y
 
+# Install aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip
+unzip awscliv2.zip
+sudo ./aws/install
+
 # Add Docker's official GPG key:
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -18,7 +24,6 @@ sudo apt-get update
 # Install Docker
  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
-
 # Start Docker
 sudo systemctl start docker
 
@@ -27,7 +32,7 @@ sudo systemctl enable docker
 
 # Create a shell script to run the server by taking the image tagged as simple-web-app:release from the ECR 
 cat << EOT > start-website
-/bin/sh -e -c 'echo $(aws ecr get-login-password --region us-east-1) | docker login -u AWS --password-stdin ${repository_url}'
+/bin/sh -e -c 'echo $(aws ecr get-login-password --region us-east-1) | sudo docker login -u AWS --password-stdin ${repository_url}'
 sudo docker pull ${repository_url}:release
 sudo docker run -p 80:8000 ${repository_url}:release
 EOT
