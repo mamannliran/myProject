@@ -12,7 +12,7 @@ describe("GET /users", () => {
       .get("/users")
       .then((res) => {
         expect(res).to.be.html;
-        res.text.should.match(/<h1.*>Liran Mamann<\/h1>/g);
+        res.text.should.match(/<h1.*>My Web App<\/h1>/g);
         res.text.should.match(/<h3.*>.*<\/h3>/g);
         done();
       })

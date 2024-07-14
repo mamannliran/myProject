@@ -79,21 +79,13 @@ resource "aws_route_table_association" "web-app-subnet" {
 
 resource "aws_security_group" "allow-web-traffic" {
   name = "allow-web-traffic"
-  description = "Allow HTTP / HTTPS inbound traffic"
+  description = "Allow port 8000 inbound traffic"
   vpc_id = aws_vpc.nodejs-web-app.id
 
   ingress {
-    description = "HTTP"
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "HTTPS"
-    from_port = 443
-    to_port = 443
+    description = "8000"
+    from_port = 8000
+    to_port = 8000
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "nodejs-web-app-logs" {
 # S3 Bucket storing jenkins user data
 
 resource "aws_s3_bucket" "jenkins-config" {
-  bucket = "liran5-jenkins-config"
+  bucket = "liran9-jenkins-config"
   acl = "private"
 }
 

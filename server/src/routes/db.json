@@ -1,14 +1,14 @@
 [
   {
-    "name": "Text 1",
-    "email": "text1@liran.com"
+    "name": "User1",
+    "email": "user1@blahblah.com"
   },
   {
-    "name": "Text 2",
-    "email": "text2@liran.com"
+    "name": "User2",
+    "email": "user2@blahblah.com"
   },
   {
-    "name": "Text 3",
-    "email": "text3@liran.com"
+    "name": "User3",
+    "email": "user3@blahblah.com"
   }
 ]

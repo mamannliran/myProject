@@ -34,7 +34,7 @@ sudo systemctl enable docker
 cat << EOT > start-website
 /bin/sh -e -c 'echo $(aws ecr get-login-password --region us-east-1) | sudo docker login -u AWS --password-stdin ${repository_url}'
 sudo docker pull ${repository_url}:release
-sudo docker run -p 80:8000 ${repository_url}:release
+sudo docker run -p 8000:8000 ${repository_url}:release
 EOT
 
 # Move the script into the specific ubuntu linux start up folder, in order for the script to run after boot
