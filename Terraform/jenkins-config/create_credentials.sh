@@ -1,7 +1,12 @@
 #! /bin/bash
 
+# Install aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
 # Retrieve Secrets and Extract the Private key using a python command
-aws secretsmanager get-secret-value --secret-id nodejs-web-app3 --region us-east-1 | python3 -c "import sys;import json;print(json.loads(json.loads(sys.stdin.read())['SecretString'])['private'])" > ssh_tmp
+aws secretsmanager get-secret-value --secret-id nodejs-web-app6 --region us-east-1 | python3 -c "import sys;import json;print(json.loads(json.loads(sys.stdin.read())['SecretString'])['private'])" > ssh_tmp
 
 # Correctly parse the new line characters and store the key in a variable
 ssh_private_key=$(awk -v ORS='\\n' '1' ssh_tmp)
